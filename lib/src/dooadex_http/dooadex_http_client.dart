@@ -20,7 +20,7 @@ class DooadexHttpClient {
     try {
       final streamedResponse = await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      DooadexHttpResponse.get(result);
+      return DooadexHttpResponse.get(result);
     } on TimeoutException {
       DooadexException.requestTimeout();
     } on DooadexException {
@@ -29,7 +29,6 @@ class DooadexHttpClient {
   }
 
   static Future<dynamic> post({required String path, required Map<String, dynamic> body, String? token}) async {
-
     final Uri uri = DooadexHttpRequest.generateUri(path: path);
 
     final Map<String, String> headers = DooadexHttpRequest.generateHeaders(token: token);
@@ -39,7 +38,7 @@ class DooadexHttpClient {
     try {
       final streamedResponse = await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      DooadexHttpResponse.get(result);
+      return DooadexHttpResponse.get(result);
     } on TimeoutException {
       DooadexException.requestTimeout();
     } on DooadexException {
@@ -56,7 +55,7 @@ class DooadexHttpClient {
     try {
       final streamedResponse = await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      DooadexHttpResponse.get(result);
+      return DooadexHttpResponse.get(result);
     } on TimeoutException {
       DooadexException.requestTimeout();
     } on DooadexException {
@@ -73,7 +72,7 @@ class DooadexHttpClient {
     try {
       final streamedResponse = await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      DooadexHttpResponse.get(result);
+      return DooadexHttpResponse.get(result);
     } on TimeoutException {
       DooadexException.requestTimeout();
     } on DooadexException {
@@ -90,7 +89,7 @@ class DooadexHttpClient {
     try {
       final streamedResponse = await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      DooadexHttpResponse.get(result);
+      return DooadexHttpResponse.get(result);
     } on TimeoutException {
       DooadexException.requestTimeout();
     } on DooadexException {
@@ -100,11 +99,11 @@ class DooadexHttpClient {
 
   static Future<dynamic> external(
       {required String uriAddress,
-        required String method,
-        Map<String, dynamic>? queryParameters,
-        String? query,
-        Map<String, dynamic>? body,
-        String? token}) async {
+      required String method,
+      Map<String, dynamic>? queryParameters,
+      String? query,
+      Map<String, dynamic>? body,
+      String? token}) async {
     final Uri uri = DooadexHttpRequest.externalUri(uriAddress: uriAddress, queryParameters: queryParameters);
     final Map<String, String> headers = DooadexHttpRequest.generateHeaders(token: token);
     http.Request request = DooadexHttpRequest.generateRequest(method: method, headers: headers, body: body, uri: uri);
@@ -113,7 +112,7 @@ class DooadexHttpClient {
     try {
       final streamedResponse = await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      DooadexHttpResponse.get(result);
+      return DooadexHttpResponse.get(result);
     } on TimeoutException {
       DooadexException.requestTimeout();
     } on DooadexException {
