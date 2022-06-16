@@ -1,3 +1,4 @@
+import 'dart:convert';
 
 import 'package:dooadex_constants/dooadex_constants.dart';
 import 'package:http/http.dart' as http;
@@ -6,6 +7,7 @@ import '../http_utils/http_config.dart';
 
 class DooadexHttpRequest {
   DooadexHttpRequest._();
+
   static Map<String, String>? headers;
   static Uri? uri;
 
@@ -29,14 +31,8 @@ class DooadexHttpRequest {
     return headers!;
   }
 
-  static Uri generateUri(
-      {String? scheme, String? host, required String path, Map<String, dynamic>? queryParameters, String? query}) {
-    uri = Uri(
-        scheme: scheme ?? HttpConfig.scheme,
-        host: host ?? HttpConfig.host,
-        path: path,
-        queryParameters: queryParameters,
-        query: query);
+  static Uri generateUri({String? scheme, String? host, required String path, Map<String, dynamic>? queryParameters, String? query}) {
+    uri = Uri(scheme: scheme ?? HttpConfig.scheme, host: host ?? HttpConfig.host, path: path, queryParameters: queryParameters, query: query);
     return uri!;
   }
 
@@ -49,9 +45,9 @@ class DooadexHttpRequest {
     return uri!;
   }
 
-  static http.Request generateRequest(
-      {required String method, required Map<String, String> headers, required Uri uri}) {
+  static http.Request generateRequest({required String method, required Map<String, String> headers, required Uri uri, Map<String, dynamic>? body}) {
     http.Request request = http.Request(method, uri);
+    request.body = jsonEncode(body);
     request.headers.addAll(headers);
     return request;
   }

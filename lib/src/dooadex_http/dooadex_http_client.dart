@@ -29,7 +29,9 @@ class DooadexHttpClient {
   }
 
   static Future<dynamic> post({required String path, required Map<String, dynamic> body, String? token}) async {
+
     final Uri uri = DooadexHttpRequest.generateUri(path: path);
+
     final Map<String, String> headers = DooadexHttpRequest.generateHeaders(token: token);
     http.Request request = DooadexHttpRequest.generateRequest(method: HttpConstant.method.post, headers: headers, uri: uri);
     DooadexLogger.httpRequest(httpRequest: request);
@@ -98,14 +100,14 @@ class DooadexHttpClient {
 
   static Future<dynamic> external(
       {required String uriAddress,
-      required String method,
-      Map<String, dynamic>? queryParameters,
-      String? query,
-      Map<String, dynamic>? body,
-      String? token}) async {
+        required String method,
+        Map<String, dynamic>? queryParameters,
+        String? query,
+        Map<String, dynamic>? body,
+        String? token}) async {
     final Uri uri = DooadexHttpRequest.externalUri(uriAddress: uriAddress, queryParameters: queryParameters);
     final Map<String, String> headers = DooadexHttpRequest.generateHeaders(token: token);
-    http.Request request = DooadexHttpRequest.generateRequest(method: HttpConstant.method.get, headers: headers, uri: uri);
+    http.Request request = DooadexHttpRequest.generateRequest(method: method, headers: headers, body: body, uri: uri);
     DooadexLogger.httpRequest(httpRequest: request);
 
     try {
