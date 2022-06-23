@@ -19,7 +19,9 @@ class DooadexHttpRequest {
   }
 
   static Map<String, String> _generateAuthorizationHeader(String token) {
-    final Map<String, String> authorizationHeader = {'Authorization': "${HttpConstant.tokenType.bearer} $token"};
+    final Map<String, String> authorizationHeader = {
+      'Authorization': "${HttpConstant.tokenType.bearer} $token"
+    };
     return authorizationHeader;
   }
 
@@ -31,12 +33,25 @@ class DooadexHttpRequest {
     return headers!;
   }
 
-  static Uri generateUri({String? scheme, String? host, required String path, Map<String, dynamic>? queryParameters, String? query}) {
-    uri = Uri(scheme: scheme ?? HttpConfig.scheme, host: host ?? HttpConfig.host, path: path, queryParameters: queryParameters, query: query);
+  static Uri generateUri(
+      {String? scheme,
+      String? host,
+      int? port,
+      required String path,
+      Map<String, dynamic>? queryParameters,
+      String? query}) {
+    uri = Uri(
+        scheme: scheme ?? HttpConfig.scheme,
+        host: host ?? HttpConfig.host,
+        port: port,
+        path: path,
+        queryParameters: queryParameters,
+        query: query);
     return uri!;
   }
 
-  static Uri externalUri({required String uriAddress, Map<String, dynamic>? queryParameters}) {
+  static Uri externalUri(
+      {required String uriAddress, Map<String, dynamic>? queryParameters}) {
     if (queryParameters == null) {
       uri = Uri.parse(uriAddress);
     } else {
@@ -45,7 +60,11 @@ class DooadexHttpRequest {
     return uri!;
   }
 
-  static http.Request generateRequest({required String method, required Map<String, String> headers, required Uri uri, Map<String, dynamic>? body}) {
+  static http.Request generateRequest(
+      {required String method,
+      required Map<String, String> headers,
+      required Uri uri,
+      Map<String, dynamic>? body}) {
     http.Request request = http.Request(method, uri);
     request.body = jsonEncode(body);
     request.headers.addAll(headers);

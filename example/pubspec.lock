@@ -63,21 +63,21 @@ packages:
       name: dooadex_error_handler
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.5"
   dooadex_http:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.2"
+    version: "0.0.3"
   dooadex_logger:
     dependency: transitive
     description:
       name: dooadex_logger
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   dooadex_palette:
     dependency: "direct main"
     description:

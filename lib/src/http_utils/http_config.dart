@@ -4,7 +4,8 @@ class HttpConfig {
   HttpConfig._();
 
   static String scheme = "https";
-  static String host = "localhost:3000";
+  static String host = "localhost";
+  static int? port = 3000;
   static String contentType = HttpConstant.contentType.json;
   static String tokenType = HttpConstant.tokenType.bearer;
 
