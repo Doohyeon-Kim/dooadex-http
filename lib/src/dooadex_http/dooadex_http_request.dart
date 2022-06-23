@@ -33,6 +33,14 @@ class DooadexHttpRequest {
     return headers!;
   }
 
+  static Map<String, String> generateMultipartHeaders({String? token}) {
+    headers = {'Content-Type': 'multipart/form-data'};
+    if (token != null) {
+      headers!.addAll(_generateAuthorizationHeader(token));
+    }
+    return headers!;
+  }
+
   static Uri generateUri(
       {String? scheme,
       String? host,

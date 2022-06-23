@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dooadex_error_handler/dooadex_error_handler.dart';
 import 'package:dooadex_palette/dooadex_palette.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Dooadex Package Test App',
       theme: ThemeData(
-        primarySwatch: MaterialColor(DooadexColor.primaryMaterialColor.colorHex, DooadexColor.primaryMaterialColor.swatch),
+        primarySwatch: MaterialColor(DooadexColor.primaryMaterialColor.colorHex,
+            DooadexColor.primaryMaterialColor.swatch),
       ),
       home: const MyHomePage(title: 'Dooadex Home Page'),
     );
@@ -41,14 +44,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ElevatedButton(
           onPressed: () async {
             DooadexHttp.init(scheme: "https", host: 'api.agify.io');
-            await DooadexHttpClient.get(path: '', queryParameters: {"name": "dhkim"});
+            await DooadexHttpClient.get(
+                path: '', queryParameters: {"name": "dhkim"});
             DooadexHttp.init(scheme: "https", host: 'httpbin.org');
             await DooadexHttpClient.get(path: 'get');
             await DooadexHttpClient.post(path: 'post', body: {});
             await DooadexHttpClient.put(path: 'put', body: {});
             await DooadexHttpClient.delete(path: 'delete', body: {});
             await DooadexHttpClient.patch(path: 'patch', body: {});
-            await DooadexHttpClient.external(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
+            await DooadexHttpClient.external(
+                uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
           },
           child: const Text("Test"),
         ),
