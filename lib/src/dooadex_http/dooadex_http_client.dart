@@ -48,7 +48,7 @@ class DooadexHttpClient {
     final Map<String, String> headers =
         DooadexHttpRequest.generateHeaders(token: token);
     http.Request request = DooadexHttpRequest.generateRequest(
-        method: HttpConstant.method.post, headers: headers, uri: uri);
+        method: HttpConstant.method.post, headers: headers, uri: uri, body: body);
     DooadexLogger.httpRequest(httpRequest: request);
 
     try {
@@ -72,7 +72,7 @@ class DooadexHttpClient {
     final Map<String, String> headers =
         DooadexHttpRequest.generateHeaders(token: token);
     http.Request request = DooadexHttpRequest.generateRequest(
-        method: HttpConstant.method.put, headers: headers, uri: uri);
+        method: HttpConstant.method.put, headers: headers, uri: uri, body: body);
     DooadexLogger.httpRequest(httpRequest: request);
 
     try {
@@ -96,7 +96,7 @@ class DooadexHttpClient {
     final Map<String, String> headers =
         DooadexHttpRequest.generateHeaders(token: token);
     http.Request request = DooadexHttpRequest.generateRequest(
-        method: HttpConstant.method.delete, headers: headers, uri: uri);
+        method: HttpConstant.method.delete, headers: headers, uri: uri, body: body);
     DooadexLogger.httpRequest(httpRequest: request);
 
     try {
@@ -120,7 +120,7 @@ class DooadexHttpClient {
     final Map<String, String> headers =
         DooadexHttpRequest.generateHeaders(token: token);
     http.Request request = DooadexHttpRequest.generateRequest(
-        method: HttpConstant.method.patch, headers: headers, uri: uri);
+        method: HttpConstant.method.patch, headers: headers, uri: uri, body: body);
     DooadexLogger.httpRequest(httpRequest: request);
 
     try {
@@ -146,7 +146,6 @@ class DooadexHttpClient {
     Uri url = Uri.parse(uriAddress);
     DooadexHttpRequest.generateMultipartHeaders(token: token);
     http.MultipartRequest request = http.MultipartRequest(method, url);
-
     request.files.add(await http.MultipartFile.fromPath('file', file.path));
 
     DooadexLogger.multipartRequest(multipartRequest: request);

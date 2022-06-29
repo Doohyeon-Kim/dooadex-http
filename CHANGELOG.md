@@ -1,3 +1,3 @@
-## 0.0.4
+## 0.0.6
 
-Add multipart
+Fix, Added body property in dooadex_http_client.
