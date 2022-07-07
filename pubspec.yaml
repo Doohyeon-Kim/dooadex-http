@@ -1,6 +1,6 @@
 name: dooadex_http
 description: A useful src.http package.
-version: 0.0.8
+version: 0.0.9
 repository: "https://github.com/Doohyeon-Kim/dooadex-http.git"
 
 environment:
