@@ -6,7 +6,7 @@ import 'package:http/http.dart';
 
 class DooadexHttpResponse {
   static dynamic get(Response response) {
-    final dynamic responseJson;
+    late dynamic responseJson;
     final DooadexError? dooadexError;
 
     switch (response.statusCode) {
