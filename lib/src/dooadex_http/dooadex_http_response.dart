@@ -48,6 +48,14 @@ class DooadexHttpResponse {
             detail: responseJson['error']['detail']);
         throw DooadexException(dooadexError);
 
+      case 409: // Not Found
+        dooadexError = DooadexErrors.conflict(
+            type: responseJson['error']['type'],
+            message: responseJson['error']['message'],
+            title: responseJson['error']['title'],
+            detail: responseJson['error']['detail']);
+        throw DooadexException(dooadexError);
+
       case 500: // Internal Server Error
         dooadexError = DooadexErrors.internalServerError(
             type: responseJson['error']['type'],
