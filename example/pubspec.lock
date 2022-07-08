@@ -70,14 +70,14 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.6"
+    version: "0.0.9"
   dooadex_logger:
     dependency: transitive
     description:
       name: dooadex_logger
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.4"
+    version: "0.0.5"
   dooadex_palette:
     dependency: "direct main"
     description:

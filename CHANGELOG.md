@@ -1,3 +1,3 @@
-## 0.0.9
+## 0.0.10
 
-Added 408 Error and divided 204 in Http Response.
+Bugfix: When GET method gives null body issue.  

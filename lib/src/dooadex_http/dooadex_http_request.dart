@@ -74,7 +74,9 @@ class DooadexHttpRequest {
       required Uri uri,
       Map<String, dynamic>? body}) {
     http.Request request = http.Request(method, uri);
-    request.body = jsonEncode(body);
+    if (body != null) {
+      request.body = jsonEncode(body);
+    }
     request.headers.addAll(headers);
     return request;
   }
