@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 
 import '../http_utils/http_config.dart';
 
-class DooadexHttpRequest {
-  DooadexHttpRequest._();
+class DdxHttpRequest {
+  DdxHttpRequest._();
 
   static Map<String, String>? headers;
   static Uri? uri;
@@ -20,7 +20,7 @@ class DooadexHttpRequest {
 
   static Map<String, String> _generateAuthorizationHeader(String token) {
     final Map<String, String> authorizationHeader = {
-      'Authorization': "${HttpConstant.tokenType.bearer} $token"
+      'Authorization': "${DdxHttpConst.tokenType.bearer} $token"
     };
     return authorizationHeader;
   }

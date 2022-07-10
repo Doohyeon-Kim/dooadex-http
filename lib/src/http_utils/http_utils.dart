@@ -6,14 +6,14 @@ import 'package:http/http.dart' as http;
 
 class HttpUtil {
   static dynamic encodeRequestBody(dynamic data, String contentType) {
-    return contentType == HttpConstant.contentType.json ? utf8.encode(jsonEncode(data)) : data;
+    return contentType == DdxHttpConst.contentType.json ? utf8.encode(jsonEncode(data)) : data;
   }
 
   static void requestLogger({required http.Request request}) {
-    DooadexLogger.httpRequest(httpRequest: request);
+    DdxLogger.httpRequest(httpRequest: request);
   }
 
   static void responseLogger({required http.Response response}) {
-    DooadexLogger.httpResponse(httpResponse: response);
+    DdxLogger.httpResponse(httpResponse: response);
   }
 }

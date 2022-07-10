@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:dooadex_error_handler/dooadex_error_handler.dart';
 import 'package:dooadex_palette/dooadex_palette.dart';
 import 'package:flutter/material.dart';
 import 'package:dooadex_http/dooadex_http.dart';
@@ -15,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+    debugShowCheckedModeBanner: false,
       title: 'Dooadex Package Test App',
       theme: ThemeData(
         primarySwatch: MaterialColor(DooadexColor.primaryMaterialColor.colorHex,

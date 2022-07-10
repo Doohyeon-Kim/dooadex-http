@@ -18,22 +18,22 @@ class DooadexHttpClient {
       Map<String, dynamic>? queryParameters,
       String? query,
       String? token}) async {
-    final Uri uri = DooadexHttpRequest.generateUri(
+    final Uri uri = DdxHttpRequest.generateUri(
         path: path, port: port, queryParameters: queryParameters, query: query);
     final Map<String, String> headers =
-        DooadexHttpRequest.generateHeaders(token: token);
-    http.Request request = DooadexHttpRequest.generateRequest(
-        method: HttpConstant.method.get, headers: headers, uri: uri);
-    DooadexLogger.httpRequest(httpRequest: request);
+        DdxHttpRequest.generateHeaders(token: token);
+    http.Request request = DdxHttpRequest.generateRequest(
+        method: DdxHttpConst.method.get, headers: headers, uri: uri);
+    DdxLogger.httpRequest(httpRequest: request);
 
     try {
       final streamedResponse =
           await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      return DooadexHttpResponse.get(result);
+      return DdxHttpResponse.get(result);
     } on TimeoutException {
-      DooadexException.requestTimeout();
-    } on DooadexException {
+      DdxException.requestTimeout();
+    } on DdxException {
       rethrow;
     }
   }
@@ -43,22 +43,22 @@ class DooadexHttpClient {
       int? port,
       required Map<String, dynamic> body,
       String? token}) async {
-    final Uri uri = DooadexHttpRequest.generateUri(path: path, port: port);
+    final Uri uri = DdxHttpRequest.generateUri(path: path, port: port);
 
     final Map<String, String> headers =
-        DooadexHttpRequest.generateHeaders(token: token);
-    http.Request request = DooadexHttpRequest.generateRequest(
-        method: HttpConstant.method.post, headers: headers, uri: uri, body: body);
-    DooadexLogger.httpRequest(httpRequest: request);
+        DdxHttpRequest.generateHeaders(token: token);
+    http.Request request = DdxHttpRequest.generateRequest(
+        method: DdxHttpConst.method.post, headers: headers, uri: uri, body: body);
+    DdxLogger.httpRequest(httpRequest: request);
 
     try {
       final streamedResponse =
           await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      return DooadexHttpResponse.get(result);
+      return DdxHttpResponse.get(result);
     } on TimeoutException {
-      DooadexException.requestTimeout();
-    } on DooadexException {
+      DdxException.requestTimeout();
+    } on DdxException {
       rethrow;
     }
   }
@@ -68,21 +68,21 @@ class DooadexHttpClient {
       int? port,
       required Map<String, dynamic> body,
       String? token}) async {
-    final Uri uri = DooadexHttpRequest.generateUri(path: path, port: port);
+    final Uri uri = DdxHttpRequest.generateUri(path: path, port: port);
     final Map<String, String> headers =
-        DooadexHttpRequest.generateHeaders(token: token);
-    http.Request request = DooadexHttpRequest.generateRequest(
-        method: HttpConstant.method.put, headers: headers, uri: uri, body: body);
-    DooadexLogger.httpRequest(httpRequest: request);
+        DdxHttpRequest.generateHeaders(token: token);
+    http.Request request = DdxHttpRequest.generateRequest(
+        method: DdxHttpConst.method.put, headers: headers, uri: uri, body: body);
+    DdxLogger.httpRequest(httpRequest: request);
 
     try {
       final streamedResponse =
           await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      return DooadexHttpResponse.get(result);
+      return DdxHttpResponse.get(result);
     } on TimeoutException {
-      DooadexException.requestTimeout();
-    } on DooadexException {
+      DdxException.requestTimeout();
+    } on DdxException {
       rethrow;
     }
   }
@@ -92,21 +92,21 @@ class DooadexHttpClient {
       int? port,
       required Map<String, dynamic> body,
       String? token}) async {
-    final Uri uri = DooadexHttpRequest.generateUri(path: path, port: port);
+    final Uri uri = DdxHttpRequest.generateUri(path: path, port: port);
     final Map<String, String> headers =
-        DooadexHttpRequest.generateHeaders(token: token);
-    http.Request request = DooadexHttpRequest.generateRequest(
-        method: HttpConstant.method.delete, headers: headers, uri: uri, body: body);
-    DooadexLogger.httpRequest(httpRequest: request);
+        DdxHttpRequest.generateHeaders(token: token);
+    http.Request request = DdxHttpRequest.generateRequest(
+        method: DdxHttpConst.method.delete, headers: headers, uri: uri, body: body);
+    DdxLogger.httpRequest(httpRequest: request);
 
     try {
       final streamedResponse =
           await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      return DooadexHttpResponse.get(result);
+      return DdxHttpResponse.get(result);
     } on TimeoutException {
-      DooadexException.requestTimeout();
-    } on DooadexException {
+      DdxException.requestTimeout();
+    } on DdxException {
       rethrow;
     }
   }
@@ -116,21 +116,21 @@ class DooadexHttpClient {
       int? port,
       required Map<String, dynamic> body,
       String? token}) async {
-    final Uri uri = DooadexHttpRequest.generateUri(path: path, port: port);
+    final Uri uri = DdxHttpRequest.generateUri(path: path, port: port);
     final Map<String, String> headers =
-        DooadexHttpRequest.generateHeaders(token: token);
-    http.Request request = DooadexHttpRequest.generateRequest(
-        method: HttpConstant.method.patch, headers: headers, uri: uri, body: body);
-    DooadexLogger.httpRequest(httpRequest: request);
+        DdxHttpRequest.generateHeaders(token: token);
+    http.Request request = DdxHttpRequest.generateRequest(
+        method: DdxHttpConst.method.patch, headers: headers, uri: uri, body: body);
+    DdxLogger.httpRequest(httpRequest: request);
 
     try {
       final streamedResponse =
           await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      return DooadexHttpResponse.get(result);
+      return DdxHttpResponse.get(result);
     } on TimeoutException {
-      DooadexException.requestTimeout();
-    } on DooadexException {
+      DdxException.requestTimeout();
+    } on DdxException {
       rethrow;
     }
   }
@@ -144,20 +144,20 @@ class DooadexHttpClient {
     String? token,
   }) async {
     Uri url = Uri.parse(uriAddress);
-    DooadexHttpRequest.generateMultipartHeaders(token: token);
+    DdxHttpRequest.generateMultipartHeaders(token: token);
     http.MultipartRequest request = http.MultipartRequest(method, url);
     request.files.add(await http.MultipartFile.fromPath('file', file.path));
 
-    DooadexLogger.multipartRequest(multipartRequest: request);
+    DdxLogger.multipartRequest(multipartRequest: request);
 
     try {
       http.StreamedResponse streamedResponse =
           await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      return DooadexHttpResponse.get(result);
+      return DdxHttpResponse.get(result);
     } on TimeoutException {
-      DooadexException.requestTimeout();
-    } on DooadexException {
+      DdxException.requestTimeout();
+    } on DdxException {
       rethrow;
     }
   }
@@ -169,22 +169,22 @@ class DooadexHttpClient {
       String? query,
       Map<String, dynamic>? body,
       String? token}) async {
-    final Uri uri = DooadexHttpRequest.externalUri(
+    final Uri uri = DdxHttpRequest.externalUri(
         uriAddress: uriAddress, queryParameters: queryParameters);
     final Map<String, String> headers =
-        DooadexHttpRequest.generateHeaders(token: token);
-    http.Request request = DooadexHttpRequest.generateRequest(
+        DdxHttpRequest.generateHeaders(token: token);
+    http.Request request = DdxHttpRequest.generateRequest(
         method: method, headers: headers, body: body, uri: uri);
-    DooadexLogger.httpRequest(httpRequest: request);
+    DdxLogger.httpRequest(httpRequest: request);
 
     try {
       final streamedResponse =
           await request.send().timeout(HttpConfig.networkTimeLimit);
       final result = await http.Response.fromStream(streamedResponse);
-      return DooadexHttpResponse.get(result);
+      return DdxHttpResponse.get(result);
     } on TimeoutException {
-      DooadexException.requestTimeout();
-    } on DooadexException {
+      DdxException.requestTimeout();
+    } on DdxException {
       rethrow;
     }
   }

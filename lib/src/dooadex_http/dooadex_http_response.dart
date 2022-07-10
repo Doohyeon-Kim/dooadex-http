@@ -4,94 +4,94 @@ import 'package:dooadex_error_handler/dooadex_error_handler.dart';
 import 'package:dooadex_logger/dooadex_logger.dart';
 import 'package:http/http.dart';
 
-class DooadexHttpResponse {
+class DdxHttpResponse {
   static dynamic get(Response response) {
     late dynamic responseJson;
-    final DooadexError? dooadexError;
+    final DdxError? ddxError;
 
     switch (response.statusCode) {
       case 200: // OK
       case 201: // Created
         responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-        DooadexLogger.httpResponse(httpResponse: response);
+        DdxLogger.httpResponse(httpResponse: response);
         return responseJson;
       case 204: // No Content
-        DooadexLogger.httpResponse(httpResponse: response);
+        DdxLogger.httpResponse(httpResponse: response);
         break;
       case 400: // Bad Request
         responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-        dooadexError = DooadexErrors.badRequest(
+        ddxError = DdxErrors.badRequest(
             type: responseJson['error']['type'],
             message: responseJson['error']['message'],
             title: responseJson['error']['title'],
             detail: responseJson['error']['detail']);
-        throw DooadexException(dooadexError);
+        throw DdxException(ddxError);
       case 401: // Unauthorized
         responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-        dooadexError = DooadexErrors.unauthorized(
+        ddxError = DdxErrors.unauthorized(
             type: responseJson['error']['type'],
             message: responseJson['error']['message'],
             title: responseJson['error']['title'],
             detail: responseJson['error']['detail']);
-        throw DooadexException(dooadexError);
+        throw DdxException(ddxError);
 
       case 403: // Forbidden
         responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-        dooadexError = DooadexErrors.forbidden(
+        ddxError = DdxErrors.forbidden(
             type: responseJson['error']['type'],
             message: responseJson['error']['message'],
             title: responseJson['error']['title'],
             detail: responseJson['error']['detail']);
-        throw DooadexException(dooadexError);
+        throw DdxException(ddxError);
 
       case 404: // Not Found
         responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-        dooadexError = DooadexErrors.notFound(
+        ddxError = DdxErrors.notFound(
             type: responseJson['error']['type'],
             message: responseJson['error']['message'],
             title: responseJson['error']['title'],
             detail: responseJson['error']['detail']);
-        throw DooadexException(dooadexError);
+        throw DdxException(ddxError);
 
       case 408: // Request Timeout
         responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-        dooadexError = DooadexErrors.requestTimeout(
+        ddxError = DdxErrors.requestTimeout(
             type: responseJson['error']['type'],
             message: responseJson['error']['message'],
             title: responseJson['error']['title'],
             detail: responseJson['error']['detail']);
-        throw DooadexException(dooadexError);
+        throw DdxException(ddxError);
 
       case 409: // Not Found
         responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-        dooadexError = DooadexErrors.conflict(
+        ddxError = DdxErrors.conflict(
             type: responseJson['error']['type'],
             message: responseJson['error']['message'],
             title: responseJson['error']['title'],
             detail: responseJson['error']['detail']);
-        throw DooadexException(dooadexError);
+        throw DdxException(ddxError);
 
       case 500: // Internal Server Error
         responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-        dooadexError = DooadexErrors.internalServerError(
+        ddxError = DdxErrors.internalServerError(
             type: responseJson['error']['type'],
             message: responseJson['error']['message'],
             title: responseJson['error']['title'],
             detail: responseJson['error']['detail']);
-        throw DooadexException(dooadexError);
+        throw DdxException(ddxError);
 
       case 503: // Service Unavailable
         responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-        dooadexError = DooadexErrors.serviceUnavailable(
+        ddxError = DdxErrors.serviceUnavailable(
             type: responseJson['error']['type'],
             message: responseJson['error']['message'],
             title: responseJson['error']['title'],
             detail: responseJson['error']['detail']);
-        throw DooadexException(dooadexError);
+        throw DdxException(ddxError);
 
       default:
-        dooadexError = DooadexErrors.unknownError();
-        throw DooadexException(dooadexError);
+        ddxError = DdxErrors.unknownError();
+        throw DdxException(ddxError);
     }
   }
 }

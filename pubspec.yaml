@@ -1,6 +1,6 @@
 name: dooadex_http
 description: A useful src.http package.
-version: 0.0.10
+version: 0.1.0
 repository: "https://github.com/Doohyeon-Kim/dooadex-http.git"
 
 environment:
@@ -11,9 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.4
-  dooadex_error_handler: ^0.0.5
-  dooadex_logger: ^0.0.5
-  dooadex_constants: ^0.0.3
+  dooadex_error_handler: ^0.0.6
+  dooadex_logger: ^0.0.7
+  dooadex_constants: ^0.0.4
 
 dev_dependencies:
   flutter_test:

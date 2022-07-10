@@ -1,3 +1,3 @@
-## 0.0.10
+## 0.1.0
 
-Bugfix: When GET method gives null body issue.  
+Refactor: Changed Variable prefix Dooadex to Ddx.
