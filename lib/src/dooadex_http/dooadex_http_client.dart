@@ -9,8 +9,8 @@ import '../http_utils/http_config.dart';
 import 'dooadex_http_request.dart';
 import 'dooadex_http_response.dart';
 
-class DooadexHttpClient {
-  DooadexHttpClient._();
+class DdxHttpClient {
+  DdxHttpClient._();
 
   static Future<dynamic> get(
       {required String path,

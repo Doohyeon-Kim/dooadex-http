@@ -41,16 +41,16 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            DooadexHttp.init(scheme: "https", host: 'api.agify.io');
-            await DooadexHttpClient.get(
+            DdxHttp.init(scheme: "https", host: 'api.agify.io');
+            await DdxHttpClient.get(
                 path: '', queryParameters: {"name": "dhkim"});
-            DooadexHttp.init(scheme: "https", host: 'httpbin.org');
-            await DooadexHttpClient.get(path: 'get');
-            await DooadexHttpClient.post(path: 'post', body: {});
-            await DooadexHttpClient.put(path: 'put', body: {});
-            await DooadexHttpClient.delete(path: 'delete', body: {});
-            await DooadexHttpClient.patch(path: 'patch', body: {});
-            await DooadexHttpClient.external(
+            DdxHttp.init(scheme: "https", host: 'httpbin.org');
+            await DdxHttpClient.get(path: 'get');
+            await DdxHttpClient.post(path: 'post', body: {});
+            await DdxHttpClient.put(path: 'put', body: {});
+            await DdxHttpClient.delete(path: 'delete', body: {});
+            await DdxHttpClient.patch(path: 'patch', body: {});
+            await DdxHttpClient.external(
                 uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
           },
           child: const Text("Test"),

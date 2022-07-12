@@ -1,7 +1,7 @@
 import '../http_utils/http_config.dart';
 
-class DooadexHttp {
-  DooadexHttp._();
+class DdxHttp {
+  DdxHttp._();
 
   static init({String? scheme, required String host, int? port, String? contentType, String? tokenType}) {
     HttpConfig.scheme = scheme ?? "https";
