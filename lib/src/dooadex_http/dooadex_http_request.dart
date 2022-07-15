@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dooadex_constants/dooadex_constants.dart';
 import 'package:http/http.dart' as http;
 
-import '../http_utils/http_config.dart';
+import '../http_utils/dooadex_http_config.dart';
 
 class DdxHttpRequest {
   DdxHttpRequest._();
@@ -13,7 +13,7 @@ class DdxHttpRequest {
 
   static Map<String, String> _generateBaseHeaders() {
     final Map<String, String> baseHeaders = {
-      'Content-Type': HttpConfig.contentType,
+      'Content-Type': DdxHttpConfig.contentType,
     };
     return baseHeaders;
   }
@@ -49,8 +49,8 @@ class DdxHttpRequest {
       Map<String, dynamic>? queryParameters,
       String? query}) {
     uri = Uri(
-        scheme: scheme ?? HttpConfig.scheme,
-        host: host ?? HttpConfig.host,
+        scheme: scheme ?? DdxHttpConfig.scheme,
+        host: host ?? DdxHttpConfig.host,
         port: port,
         path: path,
         queryParameters: queryParameters,

@@ -51,40 +51,40 @@ packages:
     source: hosted
     version: "1.0.5"
   dooadex_constants:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: dooadex_constants
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.4"
+    version: "0.0.8"
   dooadex_error_handler:
     dependency: "direct main"
     description:
       name: dooadex_error_handler
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.6"
+    version: "0.1.1"
   dooadex_http:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.1.2"
   dooadex_logger:
     dependency: transitive
     description:
       name: dooadex_logger
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.7"
+    version: "0.1.0"
   dooadex_palette:
     dependency: "direct main"
     description:
       name: dooadex_palette
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.4"
   fake_async:
     dependency: transitive
     description:

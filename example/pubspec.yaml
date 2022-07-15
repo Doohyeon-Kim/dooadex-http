@@ -12,8 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  dooadex_error_handler: ^0.0.7
-  dooadex_palette: ^0.0.4
+  dooadex_error_handler:
+  dooadex_palette:
+  dooadex_constants:
   dooadex_http:
     path: ../
 

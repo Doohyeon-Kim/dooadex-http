@@ -1,6 +1,9 @@
 import 'dart:convert';
 
+import 'package:dooadex_constants/dooadex_constants.dart';
 import 'package:dooadex_error_handler/dooadex_error_handler.dart';
+import 'package:dooadex_http/src/http_utils/dooadex_http_config.dart';
+import 'package:dooadex_http/src/http_utils/dooadex_http_utils.dart';
 import 'package:dooadex_logger/dooadex_logger.dart';
 import 'package:http/http.dart';
 
@@ -8,6 +11,10 @@ class DdxHttpResponse {
   static dynamic get(Response response) {
     late dynamic responseJson;
     final DdxError? ddxError;
+
+    DdxHttpConfig.jsonDecodingOption == DdxHttpConst.jsonEncodingOption.utf8
+        ? DdxHttpUtil.jsonDecodeFromUTF8(response: response)
+        : DdxHttpUtil.jsonDecode(response: response);
 
     switch (response.statusCode) {
       case 200: // OK
@@ -62,7 +69,7 @@ class DdxHttpResponse {
             detail: responseJson['error']['detail']);
         throw DdxException(ddxError);
 
-      case 409: // Not Found
+      case 409: // Conflict
         responseJson = jsonDecode(utf8.decode(response.bodyBytes));
         ddxError = DdxErrors.conflict(
             type: responseJson['error']['type'],
