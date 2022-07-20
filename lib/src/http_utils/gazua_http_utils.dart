@@ -1,11 +1,12 @@
 import 'dart:convert' as convert;
-import 'package:dooadex_constants/dooadex_constants.dart';
-import 'package:dooadex_logger/dooadex_logger.dart';
+import 'package:gazua_logger/gazua_logger.dart';
 import 'package:http/http.dart' as http;
 
-class DdxHttpUtil {
+import '../constant/http_constant.dart';
+
+class GzHttpUtil {
   static dynamic encodeRequestBodyToJson(dynamic data, String contentType) {
-    return contentType == DdxHttpConst.contentType.json ? convert.utf8.encode(convert.jsonEncode(data)) : data;
+    return contentType == GzHttpConst.contentType.json ? convert.utf8.encode(convert.jsonEncode(data)) : data;
   }
 
   static jsonDecode({required http.Response response}) {
@@ -17,10 +18,10 @@ class DdxHttpUtil {
   }
 
   static void requestLogger({required http.Request request}) {
-    DdxLogger.httpRequest(httpRequest: request);
+    GzLogger.httpRequest(httpRequest: request);
   }
 
   static void responseLogger({required http.Response response}) {
-    DdxLogger.httpResponse(httpResponse: response);
+    GzLogger.httpResponse(httpResponse: response);
   }
 }

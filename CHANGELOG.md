@@ -1,3 +1,3 @@
-# 0.1.2
+# 0.0.1
 
-Bugfix: Solved 204 response error 
+Package name changed from dooadex to gazua.

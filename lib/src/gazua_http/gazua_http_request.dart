@@ -1,26 +1,26 @@
 import 'dart:convert';
 
-import 'package:dooadex_constants/dooadex_constants.dart';
 import 'package:http/http.dart' as http;
 
-import '../http_utils/dooadex_http_config.dart';
+import '../constant/http_constant.dart';
+import '../http_utils/gazua_http_config.dart';
 
-class DdxHttpRequest {
-  DdxHttpRequest._();
+class GzHttpRequest {
+  GzHttpRequest._();
 
   static Map<String, String>? headers;
   static Uri? uri;
 
   static Map<String, String> _generateBaseHeaders() {
     final Map<String, String> baseHeaders = {
-      'Content-Type': DdxHttpConfig.contentType,
+      'Content-Type': GzHttpConfig.contentType,
     };
     return baseHeaders;
   }
 
   static Map<String, String> _generateAuthorizationHeader(String token) {
     final Map<String, String> authorizationHeader = {
-      'Authorization': "${DdxHttpConst.tokenType.bearer} $token"
+      'Authorization': "${GzHttpConst.tokenType.bearer} $token"
     };
     return authorizationHeader;
   }
@@ -49,8 +49,8 @@ class DdxHttpRequest {
       Map<String, dynamic>? queryParameters,
       String? query}) {
     uri = Uri(
-        scheme: scheme ?? DdxHttpConfig.scheme,
-        host: host ?? DdxHttpConfig.host,
+        scheme: scheme ?? GzHttpConfig.scheme,
+        host: host ?? GzHttpConfig.host,
         port: port,
         path: path,
         queryParameters: queryParameters,

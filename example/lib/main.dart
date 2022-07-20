@@ -1,8 +1,6 @@
-import 'package:dooadex_constants/dooadex_constants.dart';
-import 'package:dooadex_error_handler/dooadex_error_handler.dart';
-import 'package:dooadex_palette/dooadex_palette.dart';
 import 'package:flutter/material.dart';
-import 'package:dooadex_http/dooadex_http.dart';
+import 'package:gazua_http/gazua_http.dart';
+import 'package:twostrings_palette/twostrings_palette.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,11 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Dooadex Package Test App',
+      title: 'Two Strings Package Test App',
       theme: ThemeData(
-        primarySwatch: MaterialColor(DdxColor.primaryMaterialColor.colorHex, DdxColor.primaryMaterialColor.swatch),
+        primarySwatch:
+            MaterialColor(TwoStringsColor.primaryMaterialColor.colorHex, TwoStringsColor.primaryMaterialColor.swatch),
       ),
-      home: const MyHomePage(title: 'Dooadex Home Page'),
+      home: const MyHomePage(title: 'Two Strings Home Page'),
     );
   }
 }
@@ -42,25 +41,19 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            DdxHttp.init(scheme: "http", host: 'localhost', jsonDecodingOption: JsonDecodingOption.noOption);
+            GzHttp.init(scheme: "https", host: 'api.agify.io');
+            await GzHttpClient.get(path: '', queryParameters: {"name": "dhkim"});
+            GzHttp.init(scheme: "https", host: 'api.agify.io', jsonDecodingOption: JsonDecodingOption.noOption);
+            await GzHttpClient.external(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
+            GzHttp.init(scheme: "https", host: 'api.agify.io', jsonDecodingOption: JsonDecodingOption.utf8);
+            await GzHttpClient.external(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
 
-            await DdxHttpClient.external(
-                uriAddress: 'http://localhost:3000/members/aedade31@naver.com', method: DdxHttpConst.method.get);
-
-            DdxHttp.init(scheme: "https", host: 'api.agify.io');
-            await DdxHttpClient.get(path: '', queryParameters: {"name": "dhkim"});
-            DdxHttp.init(scheme: "https", host: 'api.agify.io', jsonDecodingOption: JsonDecodingOption.noOption);
-            await DdxHttpClient.external(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
-            DdxHttp.init(scheme: "https", host: 'api.agify.io', jsonDecodingOption: JsonDecodingOption.utf8);
-            await DdxHttpClient.external(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
-
-            DdxHttp.init(scheme: "https", host: 'httpbin.org');
-            await DdxHttpClient.get(path: 'get');
-            await DdxHttpClient.post(path: 'post', body: {});
-            await DdxHttpClient.put(path: 'put', body: {});
-            await DdxHttpClient.delete(path: 'delete', body: {});
-            await DdxHttpClient.patch(path: 'patch', body: {});
-
+            GzHttp.init(scheme: "https", host: 'httpbin.org');
+            await GzHttpClient.get(path: 'get');
+            await GzHttpClient.post(path: 'post', body: {});
+            await GzHttpClient.put(path: 'put', body: {});
+            await GzHttpClient.delete(path: 'delete', body: {});
+            await GzHttpClient.patch(path: 'patch', body: {});
           },
           child: const Text("Test"),
         ),

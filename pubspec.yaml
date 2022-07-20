@@ -1,7 +1,7 @@
-name: dooadex_http
+name: gazua_http
 description: A useful http package.
-version: 0.1.2
-repository: "https://github.com/Doohyeon-Kim/dooadex-http.git"
+version: 0.0.1
+repository: "https://github.com/Doohyeon-Kim/gazua-http.git"
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -11,9 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.4
-  dooadex_error_handler: ^0.1.1
-  dooadex_logger: ^0.1.1
-  dooadex_constants: ^0.0.8
+  gazua_error_handler: ^0.0.2
+  gazua_logger: ^0.0.1
 
 dev_dependencies:
   flutter_test:
