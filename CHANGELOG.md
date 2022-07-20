@@ -1,3 +1,3 @@
-# 0.1.3
+# 0.1.2
 
-Refactor: Improve Logging system of http communication.
+Bugfix: Solved 204 response error 
